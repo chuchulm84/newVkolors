@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Switch, Route, Link } from "react-router-dom";
 import { Menu } from "antd";
 import { PinturaImpermeabilizanteScreen } from "./screenPinturas/PinturaImpermeabilizanteScreen";
@@ -18,7 +18,7 @@ const { SubMenu } = Menu;
 const rootSubmenuKeys = ["sub1", "sub2"];
 
 export const Catalogo = () => {
-  const [openKeys, setOpenKeys] = React.useState(["sub1"]);
+  const [openKeys, setOpenKeys] = useState(["sub1"]);
 
   const onOpenChange = (keys) => {
     const latestOpenKey = keys.find((key) => openKeys.indexOf(key) === -1);
@@ -40,14 +40,15 @@ export const Catalogo = () => {
                   Inicio
                 </Link>
               </Menu.Item>
-              {/* <Menu.Item key="1"><Link to="/catalogo/inicio">Inicio</Link></Menu.Item> */}
 
               <SubMenu key='sub1' title='Productos' id='pinturas'>
                 <Menu.Item key='1'>
-                  <Link to='/catalogo/claseA'>Pintura caucho mate clase A</Link>
+                  <Link to='/catalogo/claseA'>
+                    Pintura caucho mate clase A Plus
+                  </Link>
                 </Menu.Item>
                 <Menu.Item key='2'>
-                  <Link to='/catalogo/claseB'>Pintura caucho mate clase B</Link>
+                  <Link to='/catalogo/claseB'>Pintura caucho mate clase A</Link>
                 </Menu.Item>
                 <Menu.Item key='3'>
                   <Link to='/catalogo/satinado'>
@@ -64,7 +65,6 @@ export const Catalogo = () => {
                     Pintura Alquidica Esmalte, brillante clase A
                   </Link>
                 </Menu.Item>
-                {/*  */}
                 <Menu.Item key='7'>
                   <Link to='/catalogo/primervk10'>Primer VK-10</Link>
                 </Menu.Item>
@@ -82,7 +82,6 @@ export const Catalogo = () => {
         </div>
 
         <div className='col-2 '>
-          <IconoWhatsapp />
           <Switch>
             <Route path='/catalogo/inicio' component={Inicio} />
             <Route
